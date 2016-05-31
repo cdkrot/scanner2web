@@ -12,12 +12,16 @@
    along with this file; If not, see <http://www.gnu.org/licenses/>. */
 
 
-div, button, img {
+div, button, img, p {
     display: block;
 }
 
 button {
-    margin-top: 5px;
+    margin-top: 10px;
+}
+
+p {
+    font-size: 9px;
 }
 
 img {

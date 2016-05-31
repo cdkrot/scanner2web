@@ -17,9 +17,12 @@ function do_reload_image(elem) {
 
     if (elem.potential != 0) {
         elem.potential -= 1;
+        elem.alt = "Waiting for the server" + "..".repeat(3 - elem.potential % 3);
         window.setTimeout(function(elem) {
             elem.src = "/image.png?rnd=" + Math.floor(Math.random() * 10000);
-        }, 1000, elem);
+        }, 900, elem);
+    } else {
+        elem.alt = "Waiting for the server. Response time out. Try reloading page.";
     }
 }
 
@@ -27,7 +30,7 @@ function rescan_requested() {
     var req = new XMLHttpRequest()
     req.onreadystatechange = function() {
         if (req.readyState == 4 && req.status == 200) {
-            elem = document.getElementById("scan");
+            var elem = document.getElementById("scan");
             elem.potential = 30;
             elem.src = "/image.png?rnd=" + Math.floor(Math.random() * 10000);
         }

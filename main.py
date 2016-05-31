@@ -31,7 +31,7 @@ def acquire_lock():
             os.open('image.lock', os.O_EXCL | os.O_CREAT)
             return True
         except:
-            sleep(0.5)
+            sleep(0.1)
     return False
 
 def free_lock():
