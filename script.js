@@ -22,7 +22,7 @@ function do_reload_image(elem) {
             elem.src = "/image.png?rnd=" + Math.floor(Math.random() * 10000);
         }, 900, elem);
     } else {
-        elem.alt = "Waiting for the server. Response time out. Try reloading page.";
+        elem.alt = "Waiting for the server. No image recieved. Try reloading page or pressing rescan button.";
     }
 }
 
