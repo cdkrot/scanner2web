@@ -5,14 +5,14 @@ Scanner2web is simple web application to make your scanner available across netw
 
 It is written in pure wsgi, and will run on any wsgi-capable server.
 
-You just need to install it on linux machine with scanner, and give other people
-weh address to use.
+You just need to install it on linux or unix machine with scanner, and give other people
+web address to use.
 
 Requirements
 ------------
 
 * python3, for running the scanner2web itself.
-* scanimage, for interacting with scanner.
+* scanimage (from sane), for interacting with scanner.
 * convert (from imagemagick), for on-the-fly convertions to png.
 
 Checking:
@@ -58,6 +58,7 @@ main.py     - scanner2web app
 script.js   - javascript for browser
 style.css   - styles for browser
 index.html  - main page
+rescan.html - returned to javascript-free browsers on '/rescan' request
 image.png   - [temporary file] stores last scanned image
 image.lock  - [temporary file] prevents data races.
 

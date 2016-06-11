@@ -17,13 +17,20 @@
     <link rel="stylesheet" href="/style.css"/>
     <script src="/script.js"></script>
   </head>
-  <body>
+  <body onload="document_loaded()">
     <h1>Scanner2web</h1>
     <img id="scan" src="/image.png" onerror="do_reload_image(this)"/>
-    
-    <button onclick="rescan_requested()" autofocus="true" type="button">
-      Rescan image
-    </button>
+
+    <div id="btn0" hidden="true">
+      <button onclick="rescan_requested()" type="button">
+        Rescan image
+      </button>
+    </div>
+    <noscript>
+      <a href="/rescan">
+         Rescan image (no javascript)
+      </a>
+    </noscript>
     <p>To save image right click on it and select "save as"</p>
   </body>
 </html>

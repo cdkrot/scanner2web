@@ -11,6 +11,10 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; If not, see <http://www.gnu.org/licenses/>. -->
 
+function document_loaded() {
+    document.getElementById("btn0").hidden = "false"
+}
+
 function do_reload_image(elem) {
     if (typeof elem.potential == "undefined")
         elem.potential = 5;
@@ -31,7 +35,7 @@ function rescan_requested() {
     req.onreadystatechange = function() {
         if (req.readyState == 4 && req.status == 200) {
             var elem = document.getElementById("scan");
-            elem.potential = 30;
+            elem.potential = 15;
             elem.src = "/image.png?rnd=" + Math.floor(Math.random() * 10000);
         }
     }

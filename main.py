@@ -52,9 +52,9 @@ def start_scanning():
 def request_rescan(env, start_response):
     threading.Thread(target=start_scanning, daemon=False).start()
     
-    headers = [('Content-Type', 'text/plain'), ('Cache-Control', 'no-cache, no-store')]
+    headers = [('Content-Type', 'text/html'), ('Cache-Control', 'no-cache, no-store')]
     start_response(codes[200], headers)
-    return [b"scan"]
+    return [open("rescan.html", 'rb').read()]
     
 def serve_static(filpath, conttype, env, start_response):
     start_response(codes[200], [('Content-Type', conttype)])
