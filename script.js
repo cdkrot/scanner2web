@@ -17,7 +17,7 @@ function document_loaded() {
 
 function do_reload_image(elem) {
     if (typeof elem.potential == "undefined")
-        elem.potential = 5;
+        elem.potential = 10;
 
     if (elem.potential != 0) {
         elem.potential -= 1;
@@ -35,7 +35,7 @@ function rescan_requested() {
     req.onreadystatechange = function() {
         if (req.readyState == 4 && req.status == 200) {
             var elem = document.getElementById("scan");
-            elem.potential = 15;
+            elem.potential = 20;
             elem.src = "/image.png?rnd=" + Math.floor(Math.random() * 10000);
         }
     }
