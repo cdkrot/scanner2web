@@ -13,13 +13,17 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; If not, see <http://www.gnu.org/licenses/>.
 
+# !! This is very simple server, mostly for testing.
+# !! However you can use in small networks.
+# !! Make sure that it will not be visible in global internet.
 
 from wsgiref.simple_server import make_server
 import main
 import os
 
 try:
-    os.unlink('image.lock') # so every restart heals broken lock
+    # in case of forced stop
+    os.unlink('image.lock')
 except:
     pass
 

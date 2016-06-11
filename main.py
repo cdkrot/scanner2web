@@ -26,12 +26,12 @@ codes = {
 }
 
 def acquire_lock():
-    for ret in range(5):
+    for ret in range(3):
         try:
             os.open('image.lock', os.O_EXCL | os.O_CREAT)
             return True
         except:
-            sleep(0.1)
+            sleep(0.05)
     return False
 
 def free_lock():
@@ -79,7 +79,7 @@ def image_server(env, start_response):
 def get_redirect(path):
     if path != '/' and path.endswith('/'):
         return path[:len(path) - 1]
-    return None
+    return path
 
 routing = {
     '/': partial(serve_static, filpath='index.html', conttype='text/html'),
@@ -92,17 +92,10 @@ routing = {
 def application(env, start_response):
     path = env['PATH_INFO']
     host = env['HTTP_HOST']
-    redir = get_redirect(path)
+    path = get_redirect(path)
     
-    if redir != None:
-        headers = [('Content-Type', 'text/html'), ('Location', host + redir)]
-        start_response(codes[301], headers)
-
-        res = "Moved permanently to {}".format(host + redir)
-        return [res.encode()]
-        
     if path in routing:
         return routing[path](env=env, start_response=start_response)
     else:
         start_response(codes[404], [('Content-Type', 'text/html')])
-        return ['404. Sorry, this page doesn\'t exist'.encode()]
+        return ['404. Sorry, this page doesn\'t exist\n'.encode()]
